@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keng My Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100..900&display=swap');
+
+        * {
+            font-family: "Noto Sans Lao";
+        }
+
+        .bg-gradient-animated {
+            background: linear-gradient(-45deg, #3955d5, #33184e, #741f7d, #41171d, #08579c, #067d83);
+            background-size: 400% 400%;
+            animation: gradient 20s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 100% 50%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            75% {
+                background-position: 0% 100%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .typing {
+            overflow: hidden;
+            border-right: 0.15em solid #3B82F6;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.02em;
+            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: #3B82F6;
+            }
+        }
+
+        .floating {
+            animation: floating 8s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-20px) rotate(1deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(-1deg);
+            }
+
+            75% {
+                transform: translateY(-25px) rotate(0.5deg);
+            }
+        }
+
+        .skill-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .glassmorphism-strong {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-card {
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-20px) rotateY(5deg);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(1px);
+        }
+
+        @keyframes float-particles {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+                scale: 0;
+            }
+
+            5% {
+                opacity: 1;
+                scale: 1;
+            }
+
+            95% {
+                opacity: 1;
+                scale: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+                scale: 0;
+            }
+        }
+
+        .profile-image {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            color: white;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+        }
+
+        .stats-counter {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tech-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover .tech-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white overflow-x-hidden">
+    <!-- Animated Background -->
+    <div class="fixed inset-0 bg-gradient-animated opacity-15 z-0"></div>
+
+    <!-- Floating Particles -->
+    <div id="particles-container" class="fixed inset-0 z-0"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glassmorphism" data-aos="fade-down">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div
+                    class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                    <i class="fas fa-code mr-2"></i>Keng.dev
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-blue-400 transition-all duration-300 relative group">
+                        <i class="fas fa-home mr-2"></i>Home
+                        <span
+                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#about" class="hover:text-blue-400 transition-all duration-300 relative group">
+                        <i class="fas fa-user mr-2"></i>About
+                        <span
+                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#skills" class="hover:text-blue-400 transition-all duration-300 relative group">
+                        <i class="fas fa-cogs mr-2"></i>Skills
+                        <span
+                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#projects" class="hover:text-blue-400 transition-all duration-300 relative group">
+                        <i class="fas fa-briefcase mr-2"></i>Projects
+                        <span
+                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" class="hover:text-blue-400 transition-all duration-300 relative group">
+                        <i class="fas fa-envelope mr-2"></i>Contact
+                        <span
+                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </div>
+                <button class="md:hidden text-white">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative z-10 py-20">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Side - Profile Info -->
+                <div class="text-center lg:text-left">
+                    <div class="floating mb-8">
+                        <h1 class="text-5xl md:text-7xl font-black mt-4 mb-4" data-aos="fade-up">
+                            ສະບາຍດີ, ຂ້ອຍແມ່ນ
+                            <span
+                                class="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                                Keng
+                            </span>
+                        </h1>
+                    </div>
+                    <div class="text-2xl md:text-4xl mb-6 h-20" data-aos="fade-up" data-aos-delay="300">
+                        <span class="typing text-gray-300">Full Stack Developer 💻</span>
+                    </div>
+
+                    <!-- Description -->
+                    <p class="text-lg text-gray-300 mb-8 leading-relaxed max-w-xl" data-aos="fade-up"
+                        data-aos-delay="600">
+                        ນັກພັດທະນາທີ່ມີປະສົບການ <span class="text-blue-400 font-semibold">2+ ປີ</span>
+                        ໃນການສ້າງແອັບພລິເຄຊັນເວັບ
+                        ແລະ ມືຖື. ຂ້ອຍມີຄວາມຊ່ຽວຊານໃນ <span class="text-green-400 font-semibold">Frontend</span>,
+                        <span class="text-purple-400 font-semibold">Backend</span>, ແລະ <span
+                            class="text-yellow-400 font-semibold">DevOps</span>
+                    </p>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-6 mb-8" data-aos="fade-up" data-aos-delay="800">
+                        <div class="text-center glassmorphism p-4 rounded-lg">
+                            <div class="stats-counter">50+</div>
+                            <p class="text-sm text-gray-400">Projects</p>
+                        </div>
+                        <div class="text-center glassmorphism p-4 rounded-lg">
+                            <div class="stats-counter">2+</div>
+                            <p class="text-sm text-gray-400">Years Exp</p>
+                        </div>
+                        <div class="text-center glassmorphism p-4 rounded-lg">
+                            <div class="stats-counter">30+</div>
+                            <p class="text-sm text-gray-400">Happy Clients</p>
+                        </div>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-8" data-aos="fade-up"
+                        data-aos-delay="1000">
+                        <button
+                            class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 hover:shadow-2xl">
+                            <i class="fas fa-eye mr-2"></i>View My Work
+                        </button>
+                        <button
+                            class="glassmorphism hover:bg-white/20 px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105">
+                            <i class="fas fa-download mr-2"></i>Download CV
+                        </button>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex justify-center lg:justify-start space-x-6" data-aos="fade-up"
+                        data-aos-delay="1200">
+                        <a href="#"
+                            class="w-12 h-12 glassmorphism rounded-full flex items-center justify-center hover:bg-blue-500 transition-all transform hover:scale-110">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#"
+                            class="w-12 h-12 glassmorphism rounded-full flex items-center justify-center hover:bg-blue-600 transition-all transform hover:scale-110">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#"
+                            class="w-12 h-12 glassmorphism rounded-full flex items-center justify-center hover:bg-blue-400 transition-all transform hover:scale-110">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#"
+                            class="w-12 h-12 glassmorphism rounded-full flex items-center justify-center hover:bg-red-500 transition-all transform hover:scale-110">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Side - Profile Image -->
+                <div class="flex justify-center" data-aos="fade-left" data-aos-delay="400">
+                    <div class="relative">
+                        <div class="profile-image floating">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <!-- Decorative elements -->
+                        <div class="absolute -top-4 -right-4 w-8 h-8 bg-blue-500 rounded-full animate-bounce"></div>
+                        <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-500 rounded-full animate-bounce"
+                            style="animation-delay: 0.5s"></div>
+                        <div class="absolute top-1/2 -right-8 w-4 h-4 bg-green-400 rounded-full animate-bounce"
+                            style="animation-delay: 1s"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce" data-aos="fade-up"
+                data-aos-delay="1500">
+                <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+                    <div class="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
+                </div>
+                <p class="text-xs text-gray-400 mt-2 text-center">Scroll Down</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative z-10">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-black text-center mb-16" data-aos="fade-up">
+                <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                    About Me
+                </span>
+            </h2>
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <div class="glassmorphism-strong p-10 rounded-3xl">
+                        <h3 class="text-3xl font-bold mb-6 text-blue-400">
+                            <i class="fas fa-user-tie mr-3"></i>Who I Am
+                        </h3>
+                        <p class="text-gray-300 mb-6 leading-relaxed text-lg">
+                            ຂ້ອຍເປັນນັກພັດທະນາ Full Stack Developer ທີ່ມີຄວາມຮັກໃນການສ້າງແອັບພລິເຄຊັນເວັບທີ່ທັນສະໄໝ
+                            ແລະ ມີປະສິດທິພາບສູງ. ດ້ວຍປະສົບການ 5+ ປີໃນອຸດສາຫະກຳ IT.
+                        </p>
+                        <p class="text-gray-300 mb-6 leading-relaxed text-lg">
+                            ຂ້ອຍມີຄວາມເຊື່ຍວຊານໃນການພັດທະນາທັງ Frontend ແລະ Backend,
+                            ດ້ວຍຄວາມສາມາດໃນການໃຊ້ເທັກໂນໂລຍີທີ່ຫຼາກຫຼາຍ.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm">Problem
+                                Solver</span>
+                            <span class="bg-green-500/20 text-green-400 px-4 py-2 rounded-full text-sm">Team
+                                Player</span>
+                            <span class="bg-purple-500/20 text-purple-400 px-4 py-2 rounded-full text-sm">Quick
+                                Learner</span>
+                        </div>
+                    </div>
+                </div>
+                <div data-aos="fade-left">
+                    <div class="glassmorphism-strong p-10 rounded-3xl">
+                        <h3 class="text-3xl font-bold mb-8 text-green-400">
+                            <i class="fas fa-code mr-3"></i>What I Do
+                        </h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-laptop-code text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg mb-2">Frontend Development</h4>
+                                    <p class="text-gray-400">React, Vue, Angular, TypeScript, Next.js</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-server text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg mb-2">Backend Development</h4>
+                                    <p class="text-gray-400">Node.js, Python, PHP, Express, FastAPI</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-database text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg mb-2">Database & Cloud</h4>
+                                    <p class="text-gray-400">MongoDB, PostgreSQL, AWS, Docker</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-mobile-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg mb-2">Mobile Development</h4>
+                                    <p class="text-gray-400">React Native, Flutter, Progressive Web Apps</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 relative z-10">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-black text-center mb-16" data-aos="fade-up">
+                <span class="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+                    Skills & Technologies
+                </span>
+            </h2>
+
+            <!-- Frontend Skills -->
+            <div class="mb-16">
+                <h3 class="text-3xl font-bold mb-10 text-center text-blue-400" data-aos="fade-up">
+                    <i class="fab fa-react mr-3"></i>Frontend Development
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                    <div class="skill-card glassmorphism p-8 rounded-2xl text-center group" data-aos="zoom-in"
+                        data-aos-delay="100">
+                        <i class="fab fa-react tech-icon text-blue-400 group-hover:text-blue-300"></i>
+                        <h4 class="font-bold text-lg">Docker</h4>
+                        <p class="text-sm text-gray-400 mt-2">Advanced</p>
+                    </div>
+                    <div class="skill-card glassmorphism p-8 rounded-2xl text-center group" data-aos="zoom-in"
+                        data-aos-delay="300">
+                        <i class="fab fa-aws tech-icon text-orange-400 group-hover:text-orange-300"></i>
+                        <h4 class="font-bold text-lg">AWS</h4>
+                        <p class="text-sm text-gray-400 mt-2">Intermediate</p>
+                    </div>
+                    <div class="skill-card glassmorphism p-8 rounded-2xl text-center group" data-aos="zoom-in"
+                        data-aos-delay="400">
+                        <i class="fas fa-fire tech-icon text-red-500 group-hover:text-red-400"></i>
+                        <h4 class="font-bold text-lg">Firebase</h4>
+                        <p class="text-sm text-gray-400 mt-2">Advanced</p>
+                    </div>
+                    <div class="skill-card glassmorphism p-8 rounded-2xl text-center group" data-aos="zoom-in"
+                        data-aos-delay="500">
+                        <div class="tech-icon text-gray-100 group-hover:text-gray-300">▲</div>
+                        <h4 class="font-bold text-lg">Vercel</h4>
+                        <p class="text-sm text-gray-400 mt-2">Advanced</p>
+                    </div>
+                    <div class="skill-card glassmorphism p-8 rounded-2xl text-center group" data-aos="zoom-in"
+                        data-aos-delay="600">
+                        <i class="fab fa-figma tech-icon text-pink-500 group-hover:text-pink-400"></i>
+                        <h4 class="font-bold text-lg">Figma</h4>
+                        <p class="text-sm text-gray-400 mt-2">Intermediate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 relative z-10">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-black text-center mb-16" data-aos="fade-up">
+                <span class="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+                    Featured Projects
+                </span>
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                <!-- E-Commerce Platform -->
+                <div class="project-card glassmorphism-strong p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative mb-6 overflow-hidden rounded-2xl">
+                        <div
+                            class="h-64 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 flex items-center justify-center relative">
+                            <div class="absolute inset-0 bg-black/20"></div>
+                            <div class="relative z-10 text-center">
+                                <i class="fas fa-shopping-cart text-6xl text-white mb-4"></i>
+                                <div class="bg-white/20 backdrop-blur-sm rounded-lg p-3 inline-block">
+                                    <p class="text-white font-semibold">ລາງຂາຍອອນລາຍ</p>
+                                </div>
+                            </div>
+                            <!-- Mock browser elements -->
+                            <div class="absolute top-3 left-3 flex space-x-2">
+                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-blue-400">
+                        <i class="fas fa-store mr-2"></i>ລະບົບ E-Commerce
+                    </h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        ແພລແຟອມການຄ້າອອນລາຍທີ່ສົມບູນແບບ ມີລະບົບຈັດການສິນຄ້າ, ການຈ່າຍເງິນ,
+                        ແລະ ການຕິດຕາມການສັ່ງຊື້. ສະໜັບສະໜູນການຈ່າຍເງິນຫຼາຍຮູບແບບ.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fab fa-react mr-1"></i>React
+                        </span>
+                        <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fab fa-node-js mr-1"></i>Node.js
+                        </span>
+                        <span class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fas fa-leaf mr-1"></i>MongoDB
+                        </span>
+                        <span class="bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fab fa-stripe mr-1"></i>Stripe
+                        </span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <button
+                            class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
+                            <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                        </button>
+                        <button
+                            class="glassmorphism hover:bg-white/20 px-6 py-3 rounded-lg font-semibold transition-all">
+                            <i class="fab fa-github mr-2"></i>Code
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Task Management App -->
+                <div class="project-card glassmorphism-strong p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative mb-6 overflow-hidden rounded-2xl">
+                        <div
+                            class="h-64 bg-gradient-to-br from-green-500 via-teal-600 to-blue-500 flex items-center justify-center relative">
+                            <div class="absolute inset-0 bg-black/20"></div>
+                            <div class="relative z-10 text-center">
+                                <i class="fas fa-tasks text-6xl text-white mb-4"></i>
+                                <div class="bg-white/20 backdrop-blur-sm rounded-lg p-3 inline-block">
+                                    <p class="text-white font-semibold">ຈັດການວຽກງານ</p>
+                                </div>
+                            </div>
+                            <div class="absolute top-3 left-3 flex space-x-2">
+                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <!-- Mock task cards -->
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex space-x-2">
+                                    <div class="flex-1 bg-white/30 rounded p-2">
+                                        <div class="h-2 bg-white/50 rounded mb-1"></div>
+                                        <div class="h-1 bg-white/30 rounded"></div>
+                                    </div>
+                                    <div class="flex-1 bg-white/30 rounded p-2">
+                                        <div class="h-2 bg-white/50 rounded mb-1"></div>
+                                        <div class="h-1 bg-white/30 rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-green-400">
+                        <i class="fas fa-clipboard-list mr-2"></i>Task Management Pro
+                    </h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        ແອັບຈັດການວຽກງານທີ່ທັນສະໄໝ ມີລະບົບ Kanban Board, ການແຈ້ງເຕືອນ,
+                        ການຮ່ວມມືເປັນທີມ, ແລະ ການວິເຄາະຜົນງານ.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fab fa-vuejs mr-1"></i>Vue.js
+                        </span>
+                        <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fas fa-database mr-1"></i>PostgreSQL
+                        </span>
+                        <span class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fab fa-python mr-1"></i>FastAPI
+                        </span>
+                        <span class="bg-orange-500/20 text-orange-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fab fa-docker mr-1"></i>Docker
+                        </span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <button
+                            class="bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
+                            <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                        </button>
+                        <button
+                            class="glassmorphism hover:bg-white/20 px-6 py-3 rounded-lg font-semibold transition-all">
+                            <i class="fab fa-github mr-2"></i>Code
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Real Estate Platform -->
+                <div class="project-card glassmorphism-strong p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative mb-6 overflow-hidden rounded-2xl">
+                        <div
+                            class="h-64 bg-gradient-to-br from-purple-500 via-pink-600 to-red-500 flex items-center justify-center relative">
+                            <div class="absolute inset-0 bg-black/20"></div>
+                            <div class="relative z-10 text-center">
+                                <i class="fas fa-home text-6xl text-white mb-4"></i>
+                                <div class="bg-white/20 backdrop-blur-sm rounded-lg p-3 inline-block">
+                                    <p class="text-white font-semibold">ອະສັງຫາລິມະຊັບ</p>
+                                </div>
+                            </div>
+                            <div class="absolute top-3 left-3 flex space-x-2">
+                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <!-- Mock property cards -->
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="bg-white/30 rounded-lg p-3">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <div class="h-3 bg-white/50 rounded w-20"></div>
+                                        <div class="h-3 bg-green-400 rounded w-16"></div>
+                                    </div>
+                                    <div class="h-2 bg-white/30 rounded"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-purple-400">
+                        <i class="fas fa-building mr-2"></i>Real Estate Portal
+                    </h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        ແພລແຟອມອະສັງຫາລິມະຊັບທີ່ສົມບູນແບບ ມີລະບົບຄົ້ນຫາຂັ້ນສູງ, ການນັດໝາຍເບິ່ງບ້ານ,
+                        ແລະ ລະບົບຈັດການສໍາລັບນາຍໜ້າ.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fab fa-react mr-1"></i>Next.js
+                        </span>
+                        <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fab fa-node-js mr-1"></i>Express
+                        </span>
+                        <span class="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fas fa-map-marker-alt mr-1"></i>MapBox
+                        </span>
+                        <span class="bg-orange-500/20 text-orange-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fab fa-aws mr-1"></i>AWS S3
+                        </span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <button
+                            class="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
+                            <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                        </button>
+                        <button
+                            class="glassmorphism hover:bg-white/20 px-6 py-3 rounded-lg font-semibold transition-all">
+                            <i class="fab fa-github mr-2"></i>Code
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Learning Management System -->
+                <div class="project-card glassmorphism-strong p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="400">
+                    <div class="relative mb-6 overflow-hidden rounded-2xl">
+                        <div
+                            class="h-64 bg-gradient-to-br from-indigo-500 via-blue-600 to-cyan-500 flex items-center justify-center relative">
+                            <div class="absolute inset-0 bg-black/20"></div>
+                            <div class="relative z-10 text-center">
+                                <i class="fas fa-graduation-cap text-6xl text-white mb-4"></i>
+                                <div class="bg-white/20 backdrop-blur-sm rounded-lg p-3 inline-block">
+                                    <p class="text-white font-semibold">ຮຽນອອນລາຍ</p>
+                                </div>
+                            </div>
+                            <div class="absolute top-3 left-3 flex space-x-2">
+                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <!-- Mock course progress -->
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="bg-white/30 rounded-lg p-3">
+                                    <div class="h-2 bg-white/20 rounded mb-2"></div>
+                                    <div class="h-4 bg-white/20 rounded relative">
+                                        <div class="h-4 bg-blue-400 rounded w-3/4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-indigo-400">
+                        <i class="fas fa-chalkboard-teacher mr-2"></i>Learning Hub LMS
+                    </h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        ລະບົບຈັດການການຮຽນການສອນອອນລາຍ ມີຄໍາເວຍ Video, ການເກັບຄະແນນ,
+                        ແລະ ລະບົບຕິດຕາມຄວາມກ້າວໜ້າຂອງນັກຮຽນ.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fab fa-angular mr-1"></i>Angular
+                        </span>
+                        <span class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fab fa-php mr-1"></i>Laravel
+                        </span>
+                        <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fas fa-database mr-1"></i>MySQL
+                        </span>
+                        <span class="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fab fa-youtube mr-1"></i>Video API
+                        </span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <button
+                            class="bg-gradient-to-r from-indigo-500 to-cyan-600 hover:from-indigo-600 hover:to-cyan-700 px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
+                            <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                        </button>
+                        <button
+                            class="glassmorphism hover:bg-white/20 px-6 py-3 rounded-lg font-semibold transition-all">
+                            <i class="fab fa-github mr-2"></i>Code
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Crypto Trading Dashboard -->
+                <div class="project-card glassmorphism-strong p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="500">
+                    <div class="relative mb-6 overflow-hidden rounded-2xl">
+                        <div
+                            class="h-64 bg-gradient-to-br from-yellow-500 via-orange-600 to-red-500 flex items-center justify-center relative">
+                            <div class="absolute inset-0 bg-black/20"></div>
+                            <div class="relative z-10 text-center">
+                                <i class="fab fa-bitcoin text-6xl text-white mb-4"></i>
+                                <div class="bg-white/20 backdrop-blur-sm rounded-lg p-3 inline-block">
+                                    <p class="text-white font-semibold">Crypto Trading</p>
+                                </div>
+                            </div>
+                            <div class="absolute top-3 left-3 flex space-x-2">
+                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <!-- Mock chart -->
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="bg-white/30 rounded-lg p-3">
+                                    <div class="flex items-end space-x-1 h-12">
+                                        <div class="bg-green-400 w-2 h-8 rounded-sm"></div>
+                                        <div class="bg-red-400 w-2 h-6 rounded-sm"></div>
+                                        <div class="bg-green-400 w-2 h-10 rounded-sm"></div>
+                                        <div class="bg-green-400 w-2 h-12 rounded-sm"></div>
+                                        <div class="bg-red-400 w-2 h-4 rounded-sm"></div>
+                                        <div class="bg-green-400 w-2 h-9 rounded-sm"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-yellow-400">
+                        <i class="fas fa-chart-line mr-2"></i>Crypto Dashboard
+                    </h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Dashboard ການຊື້ຂາຍ Cryptocurrency ແບບ Real-time ມີການວິເຄາະຂໍ້ມູນ,
+                        ການແຈ້ງເຕືອນລາຄາ, ແລະ Portfolio Management.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fab fa-react mr-1"></i>React
+                        </span>
+                        <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fab fa-js-square mr-1"></i>TypeScript
+                        </span>
+                        <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fas fa-chart-bar mr-1"></i>Chart.js
+                        </span>
+                        <span class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fas fa-bolt mr-1"></i>WebSocket
+                        </span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <button
+                            class="bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
+                            <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                        </button>
+                        <button
+                            class="glassmorphism hover:bg-white/20 px-6 py-3 rounded-lg font-semibold transition-all">
+                            <i class="fab fa-github mr-2"></i>Code
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Social Media App -->
+                <div class="project-card glassmorphism-strong p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="600">
+                    <div class="relative mb-6 overflow-hidden rounded-2xl">
+                        <div
+                            class="h-64 bg-gradient-to-br from-pink-500 via-rose-600 to-orange-500 flex items-center justify-center relative">
+                            <div class="absolute inset-0 bg-black/20"></div>
+                            <div class="relative z-10 text-center">
+                                <i class="fas fa-users text-6xl text-white mb-4"></i>
+                                <div class="bg-white/20 backdrop-blur-sm rounded-lg p-3 inline-block">
+                                    <p class="text-white font-semibold">Social Network</p>
+                                </div>
+                            </div>
+                            <div class="absolute top-3 left-3 flex space-x-2">
+                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <!-- Mock social feed -->
+                            <div class="absolute bottom-4 left-4 right-4 space-y-2">
+                                <div class="bg-white/30 rounded-lg p-2 flex items-center space-x-2">
+                                    <div class="w-6 h-6 bg-white/50 rounded-full"></div>
+                                    <div class="flex-1 h-2 bg-white/40 rounded"></div>
+                                </div>
+                                <div class="bg-white/30 rounded-lg p-2 flex items-center space-x-2">
+                                    <div class="w-6 h-6 bg-white/50 rounded-full"></div>
+                                    <div class="flex-1 h-2 bg-white/40 rounded"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-pink-400">
+                        <i class="fas fa-share-alt mr-2"></i>Social Connect
+                    </h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        ແອັບສື່ສັງຄົມທີ່ທັນສະໄໝ ມີການແບ່ງປັນໂພສ, ການສົນທະນາ Real-time,
+                        Stories, ແລະ ລະບົບການແຈ້ງເຕືອນທີ່ສົມບູນແບບ.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fab fa-react mr-1"></i>React Native
+                        </span>
+                        <span class="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fas fa-fire mr-1"></i>Firebase
+                        </span>
+                        <span class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fas fa-bolt mr-1"></i>Socket.io
+                        </span>
+                        <span class="bg-orange-500/20 text-orange-400 px-3 py-1 rounded-full text-sm font-medium">
+                            <i class="fas fa-cloud mr-1"></i>Cloudinary
+                        </span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <button
+                            class="bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
+                            <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                        </button>
+                        <button
+                            class="glassmorphism hover:bg-white/20 px-6 py-3 rounded-lg font-semibold transition-all">
+                            <i class="fab fa-github mr-2"></i>Code
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative z-10">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-black text-center mb-16" data-aos="fade-up">
+                <span class="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+                    Get In Touch
+                </span>
+            </h2>
+            <div class="max-w-6xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-16">
+                    <!-- Contact Info -->
+                    <div data-aos="fade-right">
+                        <div class="glassmorphism-strong p-10 rounded-3xl h-full">
+                            <h3 class="text-3xl font-bold mb-8 text-blue-400">
+                                <i class="fas fa-handshake mr-3"></i>Let's Work Together
+                            </h3>
+                            <p class="text-gray-300 mb-10 text-lg leading-relaxed">
+                                ຖ້າທ່ານມີໂປຣເຈກທີ່ສົນໃຈ ຫຼື ຕ້ອງການປຶກສາກ່ຽວກັບການພັດທະນາແອັບພລິເຄຊັນ,
+                                ຢ່າລັງເລໃນການຕິດຕໍ່ຂ້ອຍ! ຂ້ອຍພ້ອມຊ່ວຍເຫຼືອທ່ານ 24/7
+                            </p>
+
+                            <!-- Contact Methods -->
+                            <div class="space-y-8">
+                                <div class="flex items-center space-x-6 group">
+                                    <div
+                                        class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-envelope text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-xl mb-1">Email</h4>
+                                        <p class="text-gray-300 text-lg">keng.developer@gmail.com</p>
+                                        <p class="text-blue-400 text-sm">Response within 2 hours</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center space-x-6 group">
+                                    <div
+                                        class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <i class="fab fa-whatsapp text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-xl mb-1">WhatsApp</h4>
+                                        <p class="text-gray-300 text-lg">+856 20 5555 5555</p>
+                                        <p class="text-green-400 text-sm">Available 24/7</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center space-x-6 group">
+                                    <div
+                                        class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-xl mb-1">Location</h4>
+                                        <p class="text-gray-300 text-lg">Vientiane Capital, Laos</p>
+                                        <p class="text-purple-400 text-sm">Available for remote work</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center space-x-6 group">
+                                    <div
+                                        class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <i class="fab fa-linkedin text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-xl mb-1">LinkedIn</h4>
+                                        <p class="text-gray-300 text-lg">linkedin.com/in/keng-dev</p>
+                                        <p class="text-blue-400 text-sm">Professional network</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Availability Status -->
+                            <div
+                                class="mt-10 p-6 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-2xl border border-green-500/30">
+                                <div class="flex items-center space-x-3 mb-3">
+                                    <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                                    <span class="text-green-400 font-semibold text-lg">Available for new projects</span>
+                                </div>
+                                <p class="text-gray-300">Currently accepting freelance and full-time opportunities</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div data-aos="fade-left">
+                        <form class="glassmorphism-strong p-10 rounded-3xl h-full">
+                            <h3 class="text-3xl font-bold mb-8 text-center">
+                                <span
+                                    class="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+                                    <i class="fas fa-paper-plane mr-3"></i>Send Message
+                                </span>
+                            </h3>
+
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label class="block text-sm font-semibold mb-3 text-gray-300">
+                                        <i class="fas fa-user mr-2 text-blue-400"></i>Full Name
+                                    </label>
+                                    <input type="text" placeholder="Your full name"
+                                        class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-6 py-4 focus:outline-none focus:border-blue-500 focus:bg-gray-800 transition-all text-lg backdrop-blur-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold mb-3 text-gray-300">
+                                        <i class="fas fa-envelope mr-2 text-green-400"></i>Email Address
+                                    </label>
+                                    <input type="email" placeholder="your.email@example.com"
+                                        class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-6 py-4 focus:outline-none focus:border-green-500 focus:bg-gray-800 transition-all text-lg backdrop-blur-sm">
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <label class="block text-sm font-semibold mb-3 text-gray-300">
+                                    <i class="fas fa-phone mr-2 text-purple-400"></i>Phone Number
+                                </label>
+                                <input type="tel" placeholder="+856 20 xxxx xxxx"
+                                    class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-6 py-4 focus:outline-none focus:border-purple-500 focus:bg-gray-800 transition-all text-lg backdrop-blur-sm">
+                            </div>
+
+                            <div class="mb-6">
+                                <label class="block text-sm font-semibold mb-3 text-gray-300">
+                                    <i class="fas fa-briefcase mr-2 text-orange-400"></i>Project Type
+                                </label>
+                                <select
+                                    class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-6 py-4 focus:outline-none focus:border-orange-500 focus:bg-gray-800 transition-all text-lg backdrop-blur-sm">
+                                    <option>Web Development</option>
+                                    <option>Mobile App Development</option>
+                                    <option>E-commerce Solution</option>
+                                    <option>Custom Software</option>
+                                    <option>UI/UX Design</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-8">
+                                <label class="block text-sm font-semibold mb-3 text-gray-300">
+                                    <i class="fas fa-comment-dots mr-2 text-pink-400"></i>Project Details
+                                </label>
+                                <textarea rows="6"
+                                    placeholder="Tell me about your project, requirements, timeline, and budget..."
+                                    class="w-full bg-gray-800/50 border border-gray-700/50 rounded-xl px-6 py-4 focus:outline-none focus:border-pink-500 focus:bg-gray-800 transition-all text-lg backdrop-blur-sm resize-none"></textarea>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 hover:from-blue-600 hover:via-purple-700 hover:to-pink-600 py-4 rounded-xl font-bold text-lg transition-all transform hover:scale-105 hover:shadow-2xl">
+                                <i class="fas fa-rocket mr-3"></i>Send Message
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-600/20 to-pink-500/20 rounded-xl blur opacity-75 group-hover:opacity-100 transition-opacity">
+                                </div>
+                            </button>
+
+                            <p class="text-center text-gray-400 text-sm mt-6">
+                                <i class="fas fa-shield-alt mr-2"></i>Your information is safe and secure
+                            </p>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="mt-20 text-center" data-aos="fade-up">
+                    <div class="glassmorphism-strong p-8 rounded-3xl max-w-4xl mx-auto">
+                        <h3 class="text-3xl font-bold mb-6">
+                            <span class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+                                Ready to Start Your Project?
+                            </span>
+                        </h3>
+                        <p class="text-gray-300 text-lg mb-8 leading-relaxed">
+                            ມາຮ່ວມກັນສ້າງສິ່ງທີ່ຍິ່ງໃຫຍ່! ຂ້ອຍພ້ອມປ່ຽນແນວຄວາມຄິດຂອງທ່ານໃຫ້ກາຍເປັນຄວາມຈິງ
+                            ດ້ວຍເທັກໂນໂລຍີທີ່ທັນສະໄໝແລະປະສົບການທີ່ໃດແກ່ຍາວ
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <button
+                                class="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 px-8 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105">
+                                <i class="fab fa-whatsapp mr-2"></i>Chat on WhatsApp
+                            </button>
+                            <button
+                                class="glassmorphism hover:bg-white/20 px-8 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105">
+                                <i class="fas fa-calendar-alt mr-2"></i>Schedule a Call
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="glassmorphism-strong p-8 rounded-3xl">
+                <div class="grid md:grid-cols-3 gap-8 mb-8">
+                    <!-- Brand -->
+                    <div>
+                        <div class="text-3xl font-black mb-4">
+                            <span
+                                class="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                                <i class="fas fa-code mr-2"></i>Keng.dev
+                            </span>
+                        </div>
+                        <p class="text-gray-300 mb-4 leading-relaxed">
+                            Full Stack Developer ທີ່ມີຄວາມຊ່ຽວຊານໃນການສ້າງແອັບພລິເຄຊັນທີ່ທັນສະໄໝ
+                            ແລະ ມີປະສິດທິພາພສູງ
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#"
+                                class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                                <i class="fab fa-github text-white"></i>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                                <i class="fab fa-linkedin text-white"></i>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-500 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                                <i class="fab fa-twitter text-white"></i>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                                <i class="fab fa-youtube text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 text-blue-400">Quick Links</h4>
+                        <div class="space-y-3">
+                            <a href="#home" class="block text-gray-300 hover:text-blue-400 transition-colors">
+                                <i class="fas fa-home mr-2"></i>Home
+                            </a>
+                            <a href="#about" class="block text-gray-300 hover:text-blue-400 transition-colors">
+                                <i class="fas fa-user mr-2"></i>About Me
+                            </a>
+                            <a href="#skills" class="block text-gray-300 hover:text-blue-400 transition-colors">
+                                <i class="fas fa-cogs mr-2"></i>Skills
+                            </a>
+                            <a href="#projects" class="block text-gray-300 hover:text-blue-400 transition-colors">
+                                <i class="fas fa-briefcase mr-2"></i>Projects
+                            </a>
+                            <a href="#contact" class="block text-gray-300 hover:text-blue-400 transition-colors">
+                                <i class="fas fa-envelope mr-2"></i>Contact
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Services -->
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 text-green-400">Services</h4>
+                        <div class="space-y-3">
+                            <p class="text-gray-300">
+                                <i class="fas fa-laptop-code mr-2 text-blue-400"></i>Web Development
+                            </p>
+                            <p class="text-gray-300">
+                                <i class="fas fa-mobile-alt mr-2 text-green-400"></i>Mobile Apps
+                            </p>
+                            <p class="text-gray-300">
+                                <i class="fas fa-shopping-cart mr-2 text-purple-400"></i>E-commerce
+                            </p>
+                            <p class="text-gray-300">
+                                <i class="fas fa-paint-brush mr-2 text-pink-400"></i>UI/UX Design
+                            </p>
+                            <p class="text-gray-300">
+                                <i class="fas fa-cloud mr-2 text-yellow-400"></i>Cloud Solutions
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="border-gray-700 mb-6">
+
+                <div class="text-center">
+                    <p class="text-gray-300 mb-2">
+                        © 2025 Keng Developer. Made with
+                        <span class="text-red-400 text-xl">❤️</span>
+                        in <span class="text-green-400 font-semibold">Laos</span>
+                    </p>
+                    <p class="text-gray-400 text-sm">
+                        <i class="fas fa-code mr-1"></i>
+                        Built with React, Tailwind CSS, and lots of coffee ☕
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 50,
+            easing: 'ease-out-cubic'
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Create floating particles with different colors and sizes
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+
+            const size = Math.random() * 8 + 3;
+            const colors = ['#3B82F6', '#10B981', '#8B5CF6', '#F59E0B', '#EF4444', '#06B6D4', '#F97316'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.background = `radial-gradient(circle, ${color}, ${color}80)`;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animation = `float-particles ${Math.random() * 15 + 15}s linear infinite`;
+            particle.style.animationDelay = Math.random() * 10 + 's';
+
+            document.getElementById('particles-container').appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 30000);
+        }
+
+        // Generate particles more frequently
+        setInterval(createParticle, 1500);
+
+        // Multiple typing animations with different texts
+        const typingTexts = [
+            'Full Stack Developer 💻',
+            'React Specialist ⚛️',
+            'Node.js Expert 🚀',
+            'UI/UX Designer 🎨',
+            'Problem Solver 🧩'
+        ];
+        let currentTextIndex = 0;
+
+        function updateTypingText() {
+            const typingElement = document.querySelector('.typing');
+            if (typingElement) {
+                typingElement.textContent = typingTexts[currentTextIndex];
+                currentTextIndex = (currentTextIndex + 1) % typingTexts.length;
+
+                typingElement.style.animation = 'none';
+                setTimeout(() => {
+                    typingElement.style.animation = 'typing 4s steps(40, end), blink-caret 0.75s step-end infinite';
+                }, 10);
+            }
+        }
+
+        // Change typing text every 8 seconds
+        setInterval(updateTypingText, 8000);
+
+        // Enhanced navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                navbar.style.backdropFilter = 'blur(25px)';
+                navbar.style.background = 'rgba(17, 24, 39, 0.9)';
+                navbar.style.borderBottom = '1px solid rgba(59, 130, 246, 0.2)';
+            } else {
+                navbar.style.backdropFilter = 'blur(20px)';
+                navbar.style.background = 'rgba(255, 255, 255, 0.08)';
+                navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.15)';
+            }
+        });
+
+        // Stats counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stats-counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent);
+                let current = 0;
+                const increment = target / 50;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = target + '+';
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current) + '+';
+                    }
+                }, 40);
+            });
+        }
+
+        // Trigger counter animation when in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const statsSection = document.querySelector('.stats-counter').parentElement.parentElement;
+            observer.observe(statsSection);
+        });
+
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Show loading state
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+            button.disabled = true;
+
+            // Simulate form submission
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
+                button.classList.add('bg-green-500');
+
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    button.classList.remove('bg-green-500');
+                    this.reset();
+                }, 3000);
+            }, 2000);
+        });
+
+        // Project card interactions
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-20px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Skill card hover effects
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                const icon = this.querySelector('.tech-icon');
+                icon.style.transform = 'scale(1.3) rotate(10deg)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                const icon = this.querySelector('.tech-icon');
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+    </script>
+</body>
+<div class="skill-card glassmorphism p-8 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="200">
+    <i class="fab fa-react tech-icon text-blue-400 group-hover:text-blue-300"></i>
+    <h4 class="font-bold text-lg">React</h4>
+    <p class="text-sm text-gray-400 mt-2">Advanced</p>
+</div>
+<div class="skill-card glassmorphism p-8 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="200">
+    <i class="fab fa-vuejs tech-icon text-green-400 group-hover:text-green-300"></i>
+    <h4 class="font-bold text-lg">Vue.js</h4>
+    <p class="text-sm text-gray-400 mt-2">Advanced</p>
+</div>
+<div class="skill-card glassmorphism p-8 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="300">
+    <i class="fab fa-angular tech-icon text-red-500 group-hover:text-red-400"></i>
+    <h4 class="font-bold text-lg">Angular</h4>
+    <p class="text-sm text-gray-400 mt-2">Intermediate</p>
+</div>
+<div class="skill-card glassmorphism p-8 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="400">
+    <i class="fab fa-js-square tech-icon text-yellow-400 group-hover:text-yellow-300"></i>
+    <h4 class="font-bold text-lg">JavaScript</h4>
+    <p class="text-sm text-gray-400 mt-2">Expert</p>
+</div>
+<div class="skill-card glassmorphism p-8 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="500">
+    <div class="tech-icon text-blue-500 group-hover:text-blue-400">
+        <i class="fab fa-js-square"></i>
+    </div>
+    <h4 class="font-bold text-lg">TypeScript</h4>
+    <p class="text-sm text-gray-400 mt-2">Advanced</p>
+</div>
+<div class="skill-card glassmorphism p-8 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="600">
+    <i class="fas fa-wind tech-icon text-cyan-400 group-hover:text-cyan-300"></i>
+    <h4 class="font-bold text-lg">Tailwind</h4>
+    <p class="text-sm text-gray-400 mt-2">Advanced</p>
+</div>
+</div>
+</div>
+
+<!-- Backend Skills -->
+<div class="mb-16">
+    <h3 class="text-3xl font-bold mt-5 mb-10 text-center text-green-400" data-aos="fade-up">
+        <i class="fas fa-server mr-3"></i>Backend Development
+    </h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+        <div class="skill-card glassmorphism p-8 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="100">
+            <i class="fab fa-node-js tech-icon text-green-500 group-hover:text-green-400"></i>
+            <h4 class="font-bold text-lg">Node.js</h4>
+            <p class="text-sm text-gray-400 mt-2">Expert</p>
+        </div>
+        <div class="skill-card glassmorphism p-8 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="200">
+            <i class="fab fa-laravel tech-icon text-yellow-500 group-hover:text-yellow-400"></i>
+            <h4 class="font-bold text-lg">Laravel</h4>
+            <p class="text-sm text-gray-400 mt-2">Advanced</p>
+        </div>
+        <div class="skill-card glassmorphism p-8 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="300">
+            <i class="fab fa-java tech-icon text-purple-500 group-hover:text-purple-400"></i>
+            <h4 class="font-bold text-lg">Java</h4>
+            <p class="text-sm text-gray-400 mt-2">Advanced</p>
+        </div>
+        <div class="skill-card glassmorphism p-8 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="400">
+            <i class="fas fa-leaf tech-icon text-green-600 group-hover:text-green-500"></i>
+            <h4 class="font-bold text-lg">MongoDB</h4>
+            <p class="text-sm text-gray-400 mt-2">Advanced</p>
+        </div>
+        <div class="skill-card glassmorphism p-8 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="500">
+            <div class="flex justify-center">
+                <img src="/images/mysql_PNG23.png" srcset="/images/mysql_PNG23.png 1x, /images/mysql_PNG23@2x.png 2x"
+                    alt="MySQL logo" class="mx-auto w-16 h-auto object-contain" width="64" height="64" loading="lazy"
+                    decoding="async" />
+            </div>
+            <h4 class="font-bold text-lg mt-4">MySQL</h4>
+            <p class="text-sm text-gray-400 mt-2">Advanced</p>
+        </div>
+
+        <div class="skill-card glassmorphism p-8 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="600">
+            <i class="fas fa-database tech-icon text-blue-700 group-hover:text-blue-600"></i>
+            <h4 class="font-bold text-lg">PostgreSQL</h4>
+            <p class="text-sm text-gray-400 mt-2">Intermediate</p>
+        </div>
+    </div>
+</div>
+
+<!-- Tools & DevOps -->
+<section class="bg-gray-950 py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2
+                class="text-4xl sm:text-5xl font-extrabold mb-4 inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500">
+                <i class="fas fa-tools mr-3"></i>Tools & DevOps
+            </h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+                Proficient in a wide range of tools and technologies for building, deploying, and managing robust
+                applications.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8">
+            <div
+                class="skill-card bg-white/5 backdrop-blur-lg p-6 rounded-2xl shadow-xl border border-white/10 text-center transition-all duration-300 ease-in-out hover:shadow-2xl hover:border-purple-500/50 transform hover:-translate-y-2">
+                <i
+                    class="fab fa-git-alt tech-icon text-5xl text-orange-500 mb-4 transition-colors duration-300 group-hover:text-orange-400"></i>
+                <h4 class="font-bold text-xl text-white">Git</h4>
+                <p class="text-sm text-gray-400 mt-2">Expert</p>
+            </div>
+
+            <div
+                class="skill-card bg-white/5 backdrop-blur-lg p-6 rounded-2xl shadow-xl border border-white/10 text-center transition-all duration-300 ease-in-out hover:shadow-2xl hover:border-purple-500/50 transform hover:-translate-y-2">
+                <i
+                    class="fab fa-docker tech-icon text-5xl text-blue-500 mb-4 transition-colors duration-300 group-hover:text-blue-400"></i>
+                <h4 class="font-bold text-xl text-white">Docker</h4>
+                <p class="text-sm text-gray-400 mt-2">Advanced</p>
+            </div>
+
+            <div
+                class="skill-card bg-white/5 backdrop-blur-lg p-6 rounded-2xl shadow-xl border border-white/10 text-center transition-all duration-300 ease-in-out hover:shadow-2xl hover:border-purple-500/50 transform hover:-translate-y-2">
+                <i
+                    class="fab fa-aws tech-icon text-5xl text-orange-400 mb-4 transition-colors duration-300 group-hover:text-orange-300"></i>
+                <h4 class="font-bold text-xl text-white">AWS</h4>
+                <p class="text-sm text-gray-400 mt-2">Intermediate</p>
+            </div>
+            <div
+                class="skill-card bg-white/5 backdrop-blur-lg p-6 rounded-2xl shadow-xl border border-white/10 text-center transition-all duration-300 ease-in-out hover:shadow-2xl hover:border-purple-500/50 transform hover:-translate-y-2">
+                <i
+                    class="fas fa-cubes tech-icon text-5xl text-purple-500 mb-4 transition-colors duration-300 group-hover:text-purple-400"></i>
+                <h4 class="font-bold text-xl text-white">Kubernetes</h4>
+                <p class="text-sm text-gray-400 mt-2">Intermediate</p>
+            </div>
+
+            <div
+                class="skill-card bg-white/5 backdrop-blur-lg p-6 rounded-2xl shadow-xl border border-white/10 text-center transition-all duration-300 ease-in-out hover:shadow-2xl hover:border-purple-500/50 transform hover:-translate-y-2">
+                <i
+                    class="fab fa-jenkins tech-icon text-5xl text-gray-300 mb-4 transition-colors duration-300 group-hover:text-white"></i>
+                <h4 class="font-bold text-xl text-white">Jenkins</h4>
+                <p class="text-sm text-gray-400 mt-2">Intermediate</p>
+            </div>
+
+            <div
+                class="skill-card bg-white/5 backdrop-blur-lg p-6 rounded-2xl shadow-xl border border-white/10 text-center transition-all duration-300 ease-in-out hover:shadow-2xl hover:border-purple-500/50 transform hover:-translate-y-2">
+                <i
+                    class="fas fa-sitemap tech-icon text-5xl text-indigo-400 mb-4 transition-colors duration-300 group-hover:text-indigo-300"></i>
+                <h4 class="font-bold text-xl text-white">Terraform</h4>
+                <p class="text-sm text-gray-400 mt-2">Beginner</p>
+            </div>
+
+        </div>
+    </div>
+</section>
